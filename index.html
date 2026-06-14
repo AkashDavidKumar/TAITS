@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAITS Tech | Innovate. Integrate. Elevate.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- CUSTOM CURSOR -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- BACKGROUND CANVAS -->
+    <canvas id="bg-canvas"></canvas>
+    <div class="bg-mesh"></div>
+
+    <!-- INTRO LOADER -->
+    <div id="intro-screen">
+        <div class="intro-star">✦</div>
+        <div class="intro-logo-container">
+            <img src="images/logo.jpeg" alt="TAITS Tech Logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'150\' height=\'150\' fill=\'none\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23061A5B\' rx=\'20\'/><path fill=\'%231557FF\' d=\'M50 20L80 50L50 80L20 50Z\'/></svg>'">
+        </div>
+        <div class="intro-text-wrapper">
+            <div class="intro-brand">TAITS Tech</div>
+        </div>
+        <div class="intro-tagline">INNOVATE. INTEGRATE. ELEVATE.</div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav id="navbar">
+        <a href="#" class="nav-logo btn-magnetic">
+            <img src="images/logo.jpeg" alt="TAITS" onerror="this.style.display='none'">
+            <span>TAITS</span>
+        </a>
+        <div class="nav-links">
+            <a href="#about" class="btn-magnetic">About</a>
+            <a href="#services" class="btn-magnetic">Services</a>
+            <a href="#process" class="btn-magnetic">Process</a>
+            <a href="#industries" class="btn-magnetic">Industries</a>
+            <a href="#initiatives" class="btn-magnetic">Initiatives</a>
+        </div>
+        <div class="nav-cta hide-mobile" style="display: flex; gap: 1rem; align-items: center;">
+            <button id="theme-toggle" class="theme-toggle-btn btn-magnetic" title="Toggle Theme">
+                <svg id="sun-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                <svg id="moon-icon" style="display:none;" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+            <a href="#contact" class="btn btn-outline btn-magnetic">Get Started</a>
+        </div>
+        <div class="mobile-nav-actions" style="display: none; align-items: center; gap: 1rem;">
+            <button id="theme-toggle-mob" class="theme-toggle-btn" title="Toggle Theme">☀️</button>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container" style="display: flex; align-items: center;">
+            <div class="hero-content">
+                <h1 class="hero-title reveal">Transforming Ideas Into <br><span class="gradient-text">Digital Solutions</span></h1>
+                <p class="hero-subtitle reveal reveal-delay-1">Empowering Institutions, Businesses, and Startups through AI, ERP, Software Development, and Digital Innovation.</p>
+                <div class="hero-actions reveal reveal-delay-2">
+                    <a href="#services" class="btn btn-primary btn-magnetic">Get Started</a>
+                    <a href="#contact" class="btn btn-outline btn-magnetic">Book Consultation</a>
+                </div>
+            </div>
+            <div class="hero-visual reveal reveal-delay-3">
+                <div class="floating-cards-container">
+                    <div class="float-card c1">
+                        <div class="float-icon">🤖</div>
+                        <div class="float-text">
+                            <h4>AI Solutions</h4>
+                            <p>Automated processes & intelligence</p>
+                        </div>
+                    </div>
+                    <div class="float-card c2">
+                        <div class="float-icon">📊</div>
+                        <div class="float-text">
+                            <h4>ERP Dashboard</h4>
+                            <p>Streamlined management systems</p>
+                        </div>
+                    </div>
+                    <div class="float-card c3">
+                        <div class="float-icon">📱</div>
+                        <div class="float-text">
+                            <h4>Mobile Apps</h4>
+                            <p>High performance iOS & Android</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT US SECTION -->
+    <section id="about" class="section-padding">
+        <div class="container about-grid">
+            <div class="about-visual reveal">
+                <div class="abstract-sphere"></div>
+            </div>
+            <div class="about-text">
+                <h2 class="section-title reveal">About <span class="gradient-text">TAITS Tech</span></h2>
+                <p class="reveal reveal-delay-1">TAITS Tech is a technology startup focused on delivering modern software solutions that simplify management, improve productivity, and accelerate digital transformation.</p>
+                <p class="reveal reveal-delay-2">Our expertise includes ERP systems, AI-powered applications, website development, custom software solutions, training programs, and technology consulting.</p>
+                
+                <div class="mission-vision-cards">
+                    <div class="mv-card reveal reveal-delay-2">
+                        <div class="mv-icon">🎯</div>
+                        <h4>Our Mission</h4>
+                        <p style="font-size: 0.9rem; margin-top: 10px;">To develop affordable and impactful technology solutions that help organizations grow smarter.</p>
+                    </div>
+                    <div class="mv-card reveal reveal-delay-3">
+                        <div class="mv-icon">👁️</div>
+                        <h4>Our Vision</h4>
+                        <p style="font-size: 0.9rem; margin-top: 10px;">To become a trusted technology partner for institutions and businesses across India.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="section-padding" style="background: rgba(255,255,255,0.01);">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Our <span class="gradient-text">Services</span></h2>
+                <p class="section-subtitle">Comprehensive technological solutions tailored for your growth and efficiency.</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="glass-card service-card reveal">
+                    <div class="service-icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><polyline points="14 2 14 8 20 8"/><path d="M2 15h10"/><path d="m9 18 3-3-3-3"/></svg>
+                    </div>
+                    <h3 class="service-title">Educational ERP Solutions</h3>
+                    <p class="service-desc">Complete school and college management systems designed for seamless administration.</p>
+                    <a href="#" class="service-link">Explore ERP →</a>
+                </div>
+                <!-- Service 2 -->
+                <div class="glass-card service-card reveal reveal-delay-1">
+                    <div class="service-icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    </div>
+                    <h3 class="service-title">Custom Software</h3>
+                    <p class="service-desc">Tailor-made software built strictly according to your specific business requirements.</p>
+                    <a href="#" class="service-link">View Solutions →</a>
+                </div>
+                <!-- Service 3 -->
+                <div class="glass-card service-card reveal reveal-delay-2">
+                    <div class="service-icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10H12V2z"/><path d="M12 12 2.1 7.1"/><path d="m12 12 9.9 4.9"/></svg>
+                    </div>
+                    <h3 class="service-title">AI-Powered Solutions</h3>
+                    <p class="service-desc">Intelligent applications leveraging Artificial Intelligence and Machine Learning automation.</p>
+                    <a href="#" class="service-link">Discover AI →</a>
+                </div>
+                <!-- Service 4 -->
+                <div class="glass-card service-card reveal">
+                    <div class="service-icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    </div>
+                    <h3 class="service-title">Website Development</h3>
+                    <p class="service-desc">Professional, responsive, and high-converting websites for businesses and organizations.</p>
+                    <a href="#" class="service-link">See Portfolio →</a>
+                </div>
+                <!-- Service 5 -->
+                <div class="glass-card service-card reveal reveal-delay-1">
+                    <div class="service-icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                    </div>
+                    <h3 class="service-title">Mobile App Development</h3>
+                    <p class="service-desc">High-performance native and cross-platform mobile applications for Android and iOS.</p>
+                    <a href="#" class="service-link">App Services →</a>
+                </div>
+                <!-- Service 6 -->
+                <div class="glass-card service-card reveal reveal-delay-2">
+                    <div class="service-icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+                    </div>
+                    <h3 class="service-title">Cloud Solutions</h3>
+                    <p class="service-desc">Secure, scalable, and reliable cloud infrastructure setup, deployment, and management.</p>
+                    <a href="#" class="service-link">Explore Cloud →</a>
+                </div>
+                <!-- Service 7 -->
+                <div class="glass-card service-card reveal">
+                    <div class="service-icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3 class="service-title">CRM Solutions</h3>
+                    <p class="service-desc">Manage customer relationships and streamline business operations efficiently.</p>
+                    <a href="#" class="service-link">Learn More →</a>
+                </div>
+                <!-- Service 8 -->
+                <div class="glass-card service-card reveal reveal-delay-1">
+                    <div class="service-icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                    </div>
+                    <h3 class="service-title">Training & Workshops</h3>
+                    <p class="service-desc">Technology training, AI workshops, webinars, and project-based learning sessions.</p>
+                    <a href="#" class="service-link">View Programs →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US SECTION -->
+    <section class="section-padding why-choose-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Why Choose <span class="gradient-text">TAITS Tech?</span></h2>
+                <p class="section-subtitle">We don't just build software; we build partnerships for sustainable digital growth.</p>
+            </div>
+
+            <div class="infographic-container reveal" id="infographic">
+                <div class="info-center btn-magnetic">
+                    <img src="images/logo.jpeg" alt="TAITS" onerror="this.style.display='none'">
+                </div>
+                <!-- Static Nodes for SEO, Performance & Responsiveness -->
+                <div class="info-node">
+                    <div style="font-size:1.5rem">💰</div>
+                    <div class="info-tooltip">
+                        <strong>Affordable</strong>
+                        <span>High quality at reasonable prices</span>
+                    </div>
+                </div>
+                <div class="info-node">
+                    <div style="font-size:1.5rem">⚙️</div>
+                    <div class="info-tooltip">
+                        <strong>Modern Tech</strong>
+                        <span>Using latest frameworks</span>
+                    </div>
+                </div>
+                <div class="info-node">
+                    <div style="font-size:1.5rem">📈</div>
+                    <div class="info-tooltip">
+                        <strong>Scalable</strong>
+                        <span>Built to grow with you</span>
+                    </div>
+                </div>
+                <div class="info-node">
+                    <div style="font-size:1.5rem">🎓</div>
+                    <div class="info-tooltip">
+                        <strong>Student Friendly</strong>
+                        <span>Easy to use and learn</span>
+                    </div>
+                </div>
+                <div class="info-node">
+                    <div style="font-size:1.5rem">🔄</div>
+                    <div class="info-tooltip">
+                        <strong>Innovation</strong>
+                        <span>Constantly improving</span>
+                    </div>
+                </div>
+                <div class="info-node">
+                    <div style="font-size:1.5rem">🛡️</div>
+                    <div class="info-tooltip">
+                        <strong>Support</strong>
+                        <span>Dedicated assistance</span>
+                    </div>
+                </div>
+                <div class="info-node">
+                    <div style="font-size:1.5rem">🎯</div>
+                    <div class="info-tooltip">
+                        <strong>Focus</strong>
+                        <span>Customer success driven</span>
+                    </div>
+                </div>
+                <div class="info-node">
+                    <div style="font-size:1.5rem">✨</div>
+                    <div class="info-tooltip">
+                        <strong>Quality</strong>
+                        <span>Best coding practices</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEVELOPMENT PROCESS SECTION -->
+    <section id="process" class="section-padding" style="background: rgba(3,7,18,0.5);">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Our Development <span class="gradient-text">Process</span></h2>
+                <p class="section-subtitle">We follow a transparent, agile methodology to deliver the best results.</p>
+            </div>
+
+            <div class="process-container reveal" id="process-track">
+                <div class="process-line"><div class="process-line-fill" id="process-fill"></div></div>
+                
+                <div class="process-step">
+                    <div class="step-num">01</div>
+                    <h4 class="step-title">Requirement Analysis</h4>
+                    <p class="step-desc">Understanding your needs and goals.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">02</div>
+                    <h4 class="step-title">Solution Design</h4>
+                    <p class="step-desc">Planning the best architectural solution.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">03</div>
+                    <h4 class="step-title">Development</h4>
+                    <p class="step-desc">Building high quality and scalable software.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">04</div>
+                    <h4 class="step-title">Testing</h4>
+                    <p class="step-desc">Ensuring quality, performance & security.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">05</div>
+                    <h4 class="step-title">Deployment</h4>
+                    <p class="step-desc">Delivering the solution successfully.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">06</div>
+                    <h4 class="step-title">Support</h4>
+                    <p class="step-desc">Continuous support and maintenance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INDUSTRIES SECTION -->
+    <section id="industries" class="section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Industries We <span class="gradient-text">Serve</span></h2>
+            </div>
+            
+            <div class="industries-grid">
+                <div class="industry-card reveal">
+                    <svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72l5 2.73 5-2.73v3.72z"/></svg>
+                    <h4>Education</h4>
+                </div>
+                <div class="industry-card reveal reveal-delay-1">
+                    <svg viewBox="0 0 24 24"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg>
+                    <h4>Businesses</h4>
+                </div>
+                <div class="industry-card reveal reveal-delay-2">
+                    <svg viewBox="0 0 24 24"><path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z"/></svg>
+                    <h4>Fitness Centers</h4>
+                </div>
+                <div class="industry-card reveal">
+                    <svg viewBox="0 0 24 24"><path d="M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm12-6h-8v7H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4z"/></svg>
+                    <h4>Hotels</h4>
+                </div>
+                <div class="industry-card reveal reveal-delay-1">
+                    <svg viewBox="0 0 24 24"><path d="M13.13 22.19l-1.63-3.83c3.61-.98 6.47-3.84 7.45-7.45l3.83 1.63c-1.37 5.34-5.31 9.28-10.65 10.65zM5.64 12.5C4.21 12.02 3 10.81 2.5 9.38l-1.89 4.41c1.37 5.34 5.31 9.28 10.65 10.65l-1.63-3.83c-1.47-.48-2.68-1.69-3.16-3.12zM12 2C6.48 2 2 6.48 2 12c0 1.33.26 2.61.74 3.77l2.84-2.84c-.38-.93-.58-1.93-.58-2.93 0-3.87 3.13-7 7-7s7 3.13 7 7c0 1-.2 2-.58 2.93l2.84 2.84c.48-1.16.74-2.44.74-3.77 0-5.52-4.48-10-10-10z"/></svg>
+                    <h4>Startups</h4>
+                </div>
+                <div class="industry-card reveal reveal-delay-2">
+                    <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                    <h4>Retail</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INITIATIVES (Bento Grid) -->
+    <section id="initiatives" class="section-padding" style="background: rgba(255,255,255,0.01);">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Recent <span class="gradient-text">Initiatives</span></h2>
+                <p class="section-subtitle">Empowering learners and building the future through practical engagement.</p>
+            </div>
+            
+            <div class="bento-grid reveal">
+                <div class="bento-item item-1">
+                    <div class="bento-content">
+                        <h3 class="bento-title">Computer Vision Webinar</h3>
+                        <p class="bento-desc">Hands-on session on real world computer vision projects.</p>
+                    </div>
+                </div>
+                <div class="bento-item item-2">
+                    <div class="bento-content">
+                        <h3 class="bento-title">AI Workshops</h3>
+                        <p class="bento-desc">Practical AI workshops for students and educators.</p>
+                    </div>
+                </div>
+                <div class="bento-item item-3">
+                    <div class="bento-content">
+                        <h3 class="bento-title">Student Programs</h3>
+                        <p class="bento-desc">Project based training for skill development.</p>
+                    </div>
+                </div>
+                <div class="bento-item item-4">
+                    <div class="bento-content" style="transform: none;">
+                        <h3 class="bento-title" style="margin-bottom:0;">Upcoming Events</h3>
+                        <p class="bento-desc" style="opacity:1; color:#fff;">Exciting webinars coming soon.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CORE VALUES -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Our <span class="gradient-text">Values</span></h2>
+            </div>
+            <div class="industries-grid"> <!-- Reusing grid layout -->
+                <div class="industry-card reveal">
+                    <div class="float-icon" style="margin-bottom:1rem; border-radius:50%; width:60px; height:60px;">💡</div>
+                    <h4 style="margin-bottom: 0.5rem;">Innovation</h4>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">We embrace new ideas and technologies.</p>
+                </div>
+                <div class="industry-card reveal reveal-delay-1">
+                    <div class="float-icon" style="margin-bottom:1rem; border-radius:50%; width:60px; height:60px;">🛡️</div>
+                    <h4 style="margin-bottom: 0.5rem;">Integrity</h4>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">We work with honesty and transparency.</p>
+                </div>
+                <div class="industry-card reveal reveal-delay-2">
+                    <div class="float-icon" style="margin-bottom:1rem; border-radius:50%; width:60px; height:60px;">🤝</div>
+                    <h4 style="margin-bottom: 0.5rem;">Collaboration</h4>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">We believe in teamwork & partnerships.</p>
+                </div>
+                <div class="industry-card reveal">
+                    <div class="float-icon" style="margin-bottom:1rem; border-radius:50%; width:60px; height:60px;">⭐</div>
+                    <h4 style="margin-bottom: 0.5rem;">Customer Success</h4>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">We are committed to delivering real value.</p>
+                </div>
+                <div class="industry-card reveal reveal-delay-1">
+                    <div class="float-icon" style="margin-bottom:1rem; border-radius:50%; width:60px; height:60px;">📚</div>
+                    <h4 style="margin-bottom: 0.5rem;">Continuous Learning</h4>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">We learn, adapt and grow every day.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE VISIONARIES -->
+    <section class="section-padding" style="padding-top: 0;">
+        <div class="container">
+            <div class="visionaries-header reveal">
+                <h2 class="section-title">The <span class="gradient-text">Masterminds</span></h2>
+                <p class="section-subtitle">Meet the visionary leaders driving innovation and digital transformation at TAITS Tech.</p>
+            </div>
+            
+            <div class="visionaries-grid">
+                <!-- Founder 1 -->
+                <div class="vis-card reveal">
+                    <div class="vis-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&q=80" alt="Founder One" class="vis-image" onerror="this.src='https://placehold.co/300x300/061A5B/FFFFFF?text=F1'">
+                    </div>
+                    <div class="vis-role">Co-Founder</div>
+                    <h3 class="vis-name">Founder One</h3>
+                    <p class="vis-bio">A passionate tech leader driving the strategic vision. Specializes in scaling AI and bringing enterprise solutions to market efficiently.</p>
+                    <div class="vis-socials">
+                        <a href="#" aria-label="LinkedIn" target="_blank" class="btn-magnetic"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                        <a href="#" aria-label="Instagram" target="_blank" class="btn-magnetic"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                        <a href="#" aria-label="Facebook" target="_blank" class="btn-magnetic"><svg viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg></a>
+                    </div>
+                </div>
+
+                <!-- Founder 2 -->
+                <div class="vis-card reveal reveal-delay-1">
+                    <div class="vis-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80" alt="Founder Two" class="vis-image" onerror="this.src='https://placehold.co/300x300/061A5B/FFFFFF?text=F2'">
+                    </div>
+                    <div class="vis-role">Co-Founder</div>
+                    <h3 class="vis-name">Founder Two</h3>
+                    <p class="vis-bio">The architectural mind behind our cloud and CRM solutions, ensuring highly reliable, scalable performance for global clients.</p>
+                    <div class="vis-socials">
+                        <a href="#" aria-label="LinkedIn" target="_blank" class="btn-magnetic"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                        <a href="#" aria-label="Instagram" target="_blank" class="btn-magnetic"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                        <a href="#" aria-label="Facebook" target="_blank" class="btn-magnetic"><svg viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg></a>
+                    </div>
+                </div>
+
+                <!-- Founder 3 -->
+                <div class="vis-card reveal reveal-delay-2">
+                    <div class="vis-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=300&q=80" alt="Founder Three" class="vis-image" onerror="this.src='https://placehold.co/300x300/061A5B/FFFFFF?text=F3'">
+                    </div>
+                    <div class="vis-role">Co-Founder</div>
+                    <h3 class="vis-name">Founder Three</h3>
+                    <p class="vis-bio">A creative force focusing on user experience, mobile app development, and delivering top-tier UI/UX across all projects.</p>
+                    <div class="vis-socials">
+                        <a href="#" aria-label="LinkedIn" target="_blank" class="btn-magnetic"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                        <a href="#" aria-label="Instagram" target="_blank" class="btn-magnetic"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                        <a href="#" aria-label="Facebook" target="_blank" class="btn-magnetic"><svg viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg></a>
+                    </div>
+                </div>
+
+                <!-- Founder 4 -->
+                <div class="vis-card reveal">
+                    <div class="vis-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&q=80" alt="Founder Four" class="vis-image" onerror="this.src='https://placehold.co/300x300/061A5B/FFFFFF?text=F4'">
+                    </div>
+                    <div class="vis-role">Co-Founder</div>
+                    <h3 class="vis-name">Founder Four</h3>
+                    <p class="vis-bio">Driving our educational initiatives and ERP software mapping, bringing years of technical experience and process automation.</p>
+                    <div class="vis-socials">
+                        <a href="#" aria-label="LinkedIn" target="_blank" class="btn-magnetic"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                        <a href="#" aria-label="Instagram" target="_blank" class="btn-magnetic"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                        <a href="#" aria-label="Facebook" target="_blank" class="btn-magnetic"><svg viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg></a>
+                    </div>
+                </div>
+
+                <!-- Founder 5 -->
+                <div class="vis-card reveal reveal-delay-1">
+                    <div class="vis-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80" alt="Founder Five" class="vis-image" onerror="this.src='https://placehold.co/300x300/061A5B/FFFFFF?text=F5'">
+                    </div>
+                    <div class="vis-role">Co-Founder</div>
+                    <h3 class="vis-name">Founder Five</h3>
+                    <p class="vis-bio">Spearheads business relationships and ensures client success. Passionate about linking technology to real-world impact.</p>
+                    <div class="vis-socials">
+                        <a href="#" aria-label="LinkedIn" target="_blank" class="btn-magnetic"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                        <a href="#" aria-label="Instagram" target="_blank" class="btn-magnetic"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                        <a href="#" aria-label="Facebook" target="_blank" class="btn-magnetic"><svg viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="section-padding" style="padding-top: 0;">
+        <div class="container">
+            <div class="stats-wrap reveal">
+                <div class="stat-item">
+                    <div class="stat-num" data-target="150">0</div>
+                    <div class="stat-label">Projects Delivered</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num" data-target="5000">0</div>
+                    <div class="stat-label">Students Trained</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num" data-target="120">0</div>
+                    <div class="stat-label">Workshops</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num" data-target="50">0</div>
+                    <div class="stat-label">Institutions Served</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section-padding" style="padding-top: 0; overflow: hidden;">
+        <div class="section-header reveal">
+            <h2 class="section-title">Client <span class="gradient-text">Trust</span></h2>
+        </div>
+        <div class="marquee-wrapper">
+            <div class="marquee">
+                <!-- Replicated for infinite effect -->
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"TAITS Tech transformed our educational institute with their seamless ERP solution. Highly recommended!"</p>
+                    <div class="client-info mt-3" style="margin-top: 1rem;">
+                        <div class="client-avatar"></div>
+                        <div><strong>Dr. Sharma</strong><br><small>Dean, Engineering College</small></div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Their custom software development team is top-notch. They delivered exactly what our business needed, on time."</p>
+                    <div class="client-info mt-3" style="margin-top: 1rem;">
+                        <div class="client-avatar" style="background: var(--luxury-gold);"></div>
+                        <div><strong>A. Patel</strong><br><small>CEO, Retail Chain</small></div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"The AI workshop conducted by TAITS was phenomenal. Our students gained immense practical knowledge."</p>
+                    <div class="client-info mt-3" style="margin-top: 1rem;">
+                        <div class="client-avatar" style="background: var(--vibrant-violet);"></div>
+                        <div><strong>Prof. Kumar</strong><br><small>HOD Computer Science</small></div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Excellent support and highly scalable cloud solutions. They truly understand enterprise needs."</p>
+                    <div class="client-info mt-3" style="margin-top: 1rem;">
+                        <div class="client-avatar" style="background: var(--electric-blue);"></div>
+                        <div><strong>M. Singh</strong><br><small>Tech Lead, Startup Inc</small></div>
+                    </div>
+                </div>
+                 <!-- Duplicates for seamless loop -->
+                 <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"TAITS Tech transformed our educational institute with their seamless ERP solution. Highly recommended!"</p>
+                    <div class="client-info mt-3" style="margin-top: 1rem;">
+                        <div class="client-avatar"></div>
+                        <div><strong>Dr. Sharma</strong><br><small>Dean, Engineering College</small></div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Their custom software development team is top-notch. They delivered exactly what our business needed, on time."</p>
+                    <div class="client-info mt-3" style="margin-top: 1rem;">
+                        <div class="client-avatar" style="background: var(--luxury-gold);"></div>
+                        <div><strong>A. Patel</strong><br><small>CEO, Retail Chain</small></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="container reveal">
+        <div class="cta-section">
+            <h2 class="cta-title">Let's Build the <span class="gradient-text">Future Together</span></h2>
+            <p class="section-subtitle">Ready to transform your ideas into reality? Contact us today to start your digital journey.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary btn-magnetic">Schedule Meeting</a>
+                <a href="#contact" class="btn btn-outline btn-magnetic">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="nav-logo">
+                        <img src="images/logo.jpeg" alt="TAITS" onerror="this.style.display='none'">
+                        <span>TAITS TECH</span>
+                    </div>
+                    <p>Transforming Ideas Into Digital Solutions. Empowering learners and building the future through innovative technology.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="social-btn">in</a>
+                        <a href="#" class="social-btn">gh</a>
+                        <a href="#" class="social-btn">ig</a>
+                        <a href="#" class="social-btn">yt</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Educational ERP</a></li>
+                        <li><a href="#">Custom Software</a></li>
+                        <li><a href="#">AI Solutions</a></li>
+                        <li><a href="#">Cloud & CRM</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="footer-title">Contact Info</h4>
+                    <ul class="footer-links">
+                        <li><a href="tel:+911234567890">📞 +91 12345 67890</a></li>
+                        <li><a href="mailto:hello@taitstech.com">✉️ hello@taitstech.com</a></li>
+                        <li><a href="https://www.taitstech.com">🌐 www.taitstech.com</a></li>
+                        <li><a href="#">📍 GitHub: taitstech</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Scan to Connect</h4>
+                    <div class="qr-code">
+                        <!-- Placeholder for actual QR code image -->
+                        <svg viewBox="0 0 100 100" fill="#030712"><rect width="100" height="100" fill="#fff"/><path d="M10 10h25v25H10zM15 15h15v15H15zM65 10h25v25H65zM70 15h15v15H70zM10 65h25v25H10zM15 70h15v15H15zM45 10h10v10H45zM45 25h10v10H45zM25 45h10v10H25zM10 45h10v10H10zM40 40h20v20H40zM65 45h10v10H65zM80 45h10v10H80zM45 65h10v10H45zM45 80h10v10H45zM65 65h10v10H65zM80 65h10v10H80zM65 80h10v10H65zM80 80h10v10H80z"/></svg>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 TAITS Tech. All rights reserved.</p>
+                <p>Innovate. Integrate. Elevate.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js" defer></script>
+</body>
+</html>
