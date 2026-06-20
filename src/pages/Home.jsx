@@ -1,6 +1,9 @@
 import React, { useContext } from 'react';
 import { motion } from 'framer-motion';
 import logo from '../assets/logo.jpeg';
+import tonyImg from '../assets/tony.png';
+import akashImg from '../assets/akash.jpg';
+import ilakkiyaImg from '../assets/ilakkiya.jpg';
 import { MagneticAnchor, MagneticButton } from '../components/MagneticElement';
 import { EmailContext } from '../context/EmailContext';
 import FloatingCards from '../components/FloatingCards';
@@ -119,7 +122,7 @@ export default function Home() {
       name: 'Tony Alldo J',
       role: '.NET Developer',
       bio: 'Experienced .NET Developer specializing in ASP.NET Core, C#, MVC, Entity Framework, and SQL Server. Skilled in designing and developing scalable web applications, task management systems, and business solutions. Committed to turning complex challenges into innovative, efficient, and user-focused solutions through technical excellence and continuous learning.',
-      image: '',
+      image: tonyImg,
       linkedin: 'https://www.linkedin.com/in/tony-alldo-17a60a282',
       instagram: 'https://www.instagram.com/tonyalldo/',
     },
@@ -127,7 +130,7 @@ export default function Home() {
       name: 'Akash David Kumar M',
       role: 'MERN Stack Developer',
       bio: 'A passionate MERN Stack Developer focused on building scalable web applications and modern digital solutions. Specializes in HTML, CSS, and JS, delivering efficient and user-friendly experiences across projects.',
-      image: '',
+      image: akashImg,
       linkedin: 'https://linkedin.com/in/akash-david-kumar-505778351/',
       instagram: 'https://www.instagram.com/its_me_mr.akash_2005/',
     },
@@ -135,7 +138,7 @@ export default function Home() {
       name: 'Ilakkiya N',
       role: 'Java Full Stack Developer',
       bio: 'A Java Full Stack Developer with 5+ years of experience in designing, developing, and delivering scalable enterprise applications. A corporate trainer passionate about mentoring learners and professionals in full stack development.',
-      image: '',
+      image: ilakkiyaImg,
       linkedin: 'https://www.linkedin.com/in/ilakkiya-n-072b38337',
       instagram: 'https://www.instagram.com/ila__1105?igsh=MTE4dG8wOXExeHZhcw==',
     },
