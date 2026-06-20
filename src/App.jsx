@@ -1,8 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import IntroScreen from './animations/IntroScreen';
 import Layout from './layouts/Layout';
 import Home from './pages/Home';
+import { EmailProvider, EmailContext } from './context/EmailContext';
+import ScheduleMeetingModal from './components/ScheduleMeetingModal';
+import ContactUsModal from './components/ContactUsModal';
+import EmailSimulator from './components/EmailSimulator';
 import './styles/global.css';
+
+/**
+ * Helper component to render modals inside context.
+ */
+function ModalContainer() {
+  const { isScheduleOpen, closeSchedule, isContactOpen, closeContact } = useContext(EmailContext);
+  return (
+    <>
+      <ScheduleMeetingModal isOpen={isScheduleOpen} onClose={closeSchedule} />
+      <ContactUsModal isOpen={isContactOpen} onClose={closeContact} />
+    </>
+  );
+}
 
 /**
  * Root App Component.
@@ -12,15 +29,19 @@ function App() {
   const [isIntroComplete, setIsIntroComplete] = useState(false);
 
   return (
-    <>
+    <EmailProvider>
       {!isIntroComplete ? (
         <IntroScreen onComplete={() => setIsIntroComplete(true)} />
       ) : (
-        <Layout>
-          <Home />
-        </Layout>
+        <>
+          <Layout>
+            <Home />
+          </Layout>
+          <EmailSimulator />
+          <ModalContainer />
+        </>
       )}
-    </>
+    </EmailProvider>
   );
 }
 

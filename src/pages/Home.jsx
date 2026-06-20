@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { motion } from 'framer-motion';
 import logo from '../assets/logo.jpeg';
-import { MagneticAnchor } from '../components/MagneticElement';
+import { MagneticAnchor, MagneticButton } from '../components/MagneticElement';
+import { EmailContext } from '../context/EmailContext';
 import FloatingCards from '../components/FloatingCards';
 import ServiceCard from '../components/ServiceCard';
 import Infographic from '../components/Infographic';
@@ -16,6 +17,7 @@ import { revealVariants, staggerContainer } from '../utils/motion';
  * Wraps content blocks in Framer Motion triggers to supply fluid fade-ups.
  */
 export default function Home() {
+  const { openSchedule, openContact } = useContext(EmailContext);
   const services = [
     {
       title: 'Educational ERP Solutions',
@@ -183,9 +185,9 @@ export default function Home() {
               <MagneticAnchor href="#services" className="btn btn-primary">
                 Get Started
               </MagneticAnchor>
-              <MagneticAnchor href="#contact" className="btn btn-outline">
+              <MagneticButton onClick={openSchedule} className="btn btn-outline">
                 Book Consultation
-              </MagneticAnchor>
+              </MagneticButton>
             </motion.div>
           </div>
           <motion.div
@@ -580,12 +582,12 @@ export default function Home() {
             Ready to transform your ideas into reality? Contact us today to start your digital journey.
           </p>
           <div className="cta-buttons">
-            <MagneticAnchor href="#" className="btn btn-primary">
+            <MagneticButton onClick={openSchedule} className="btn btn-primary">
               Schedule Meeting
-            </MagneticAnchor>
-            <MagneticAnchor href="#contact" className="btn btn-outline">
+            </MagneticButton>
+            <MagneticButton onClick={openContact} className="btn btn-outline">
               Contact Us
-            </MagneticAnchor>
+            </MagneticButton>
           </div>
         </div>
       </section>
