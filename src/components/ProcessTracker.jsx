@@ -8,6 +8,7 @@ import React, { useEffect, useState, useRef } from 'react';
 export default function ProcessTracker() {
   const trackRef = useRef(null);
   const [lineWidth, setLineWidth] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   const steps = [
     { num: '01', title: 'Requirement Analysis', desc: 'Understanding your needs and goals.' },
@@ -19,6 +20,12 @@ export default function ProcessTracker() {
   ];
 
   useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 1024);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
     const handleScroll = () => {
       const track = trackRef.current;
       if (!track) return;
@@ -38,7 +45,10 @@ export default function ProcessTracker() {
 
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Trigger initial scroll layout pass
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', checkMobile);
+    };
   }, []);
 
   return (
@@ -47,7 +57,10 @@ export default function ProcessTracker() {
         <div
           className="process-line-fill"
           id="process-fill"
-          style={{ width: `${lineWidth}%` }}
+          style={{
+            width: isMobile ? '100%' : `${lineWidth}%`,
+            height: isMobile ? `${lineWidth}%` : '100%',
+          }}
         />
       </div>
 

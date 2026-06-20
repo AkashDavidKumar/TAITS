@@ -38,7 +38,7 @@ export default function ScheduleMeetingModal({ isOpen, onClose }) {
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content glass-card" onClick={(e) => e.stopPropagation()}>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <button className="modal-close" onClick={onClose} aria-label="Close modal">✕</button>
         {submitted ? (
           <div style={{ textAlign: 'center', padding: '1rem 0' }}>

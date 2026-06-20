@@ -70,6 +70,12 @@
             scroll-behavior: smooth;
         }
 
+        main {
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+
         body {
             font-family: var(--font-body);
             background-color: var(--bg-base);
@@ -410,7 +416,7 @@
            ========================================================================== */
         nav {
             position: fixed;
-            top: 0; width: 100%;
+            top: 0; left: 0; right: 0; width: 100%;
             padding: 1.5rem 5%;
             z-index: 1000;
             display: flex;
@@ -815,10 +821,9 @@
         }
         .process-line-fill {
             position: absolute;
-            top: 0; left: 0; height: 100%;
+            top: 0; left: 0;
             background: var(--gradient-glow);
-            width: 0%;
-            transition: width 1s ease;
+            transition: all 0.3s ease;
         }
 
         .process-step {
@@ -1023,7 +1028,7 @@
         /* ==========================================================================
            TESTIMONIALS (Marquee)
            ========================================================================== */
-        .marquee-wrapper { overflow: hidden; width: 100vw; max-width: 100%; margin-left: 0; padding: 2rem 0; background: rgba(255,255,255,0.02); }
+        .marquee-wrapper { overflow: hidden; width: 100%; max-width: 100%; margin-left: 0; padding: 2rem 0; background: rgba(255,255,255,0.02); }
         .marquee { display: flex; width: max-content; animation: scrollMarquee 30s linear infinite; }
         .marquee:hover { animation-play-state: paused; }
         .testimonial-card { width: 400px; margin: 0 1rem; padding: 2rem; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; white-space: normal; }
@@ -1151,6 +1156,8 @@
             .services-grid { grid-template-columns: 1fr; }
             .hero-title { font-size: 2.8rem; }
             .stats-wrap { grid-template-columns: 1fr; }
+            .stat-num { font-size: 2.8rem !important; }
+            .cta-title { font-size: 2.2rem !important; }
             .footer-grid { grid-template-columns: 1fr; }
             .bento-grid { grid-template-columns: 1fr; }
             .item-1, .item-2, .item-3, .item-4 { grid-column: span 1; }
@@ -1175,6 +1182,11 @@
                 width: calc(100vw - 3rem) !important;
                 max-width: 100% !important;
                 margin: 0 0.5rem !important;
+            }
+            .vis-card {
+                width: 100% !important;
+                min-width: 0 !important;
+                max-width: 100% !important;
             }
             .modal-overlay {
                 padding: 0.75rem !important;
@@ -1214,7 +1226,7 @@
            ========================================================================== */
         .modal-overlay {
             position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
+            top: 0; left: 0; right: 0; bottom: 0;
             background: rgba(3, 7, 18, 0.7);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
@@ -1235,10 +1247,20 @@
             border: 1px solid var(--glass-border);
             border-radius: 24px;
             box-shadow: var(--glass-shadow);
+            max-height: 90vh;
+            overflow-y: auto;
             animation: modalScale 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
         body.light-theme .modal-content {
             background: #ffffff;
+        }
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.4) !important;
+        }
+        body.light-theme .form-group input::placeholder,
+        body.light-theme .form-group textarea::placeholder {
+            color: rgba(15, 23, 42, 0.5) !important;
         }
         @keyframes modalScale {
             from { transform: scale(0.9); opacity: 0; }

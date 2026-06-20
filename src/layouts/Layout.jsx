@@ -21,7 +21,7 @@ export default function Layout({ children }) {
 
     const revealObserver = new IntersectionObserver(revealCallback, {
       threshold: 0.15,
-      rootMargin: '0px 0px -150px 0px',
+      rootMargin: '0px 0px -20% 0px',
     });
 
     // Find and observe all reveal elements
