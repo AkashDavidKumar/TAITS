@@ -10,7 +10,7 @@ import ProcessTracker from '../components/ProcessTracker';
 import MastermindCard from '../components/MastermindCard';
 import StatsTracker from '../components/StatsTracker';
 import Marquee from '../components/Marquee';
-import { revealVariants, staggerContainer } from '../utils/motion';
+import { revealVariants, revealLeftVariants, revealRightVariants, revealScaleVariants, staggerContainer } from '../utils/motion';
 
 /**
  * Main TAITS Tech single-page layout content.
@@ -250,7 +250,7 @@ export default function Home() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 custom={0.2}
-                variants={revealVariants}
+                variants={revealRightVariants}
                 className="mv-card"
               >
                 <div className="mv-icon">🎯</div>
@@ -264,7 +264,7 @@ export default function Home() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 custom={0.3}
-                variants={revealVariants}
+                variants={revealLeftVariants}
                 className="mv-card"
               >
                 <div className="mv-icon">👁️</div>
@@ -301,16 +301,20 @@ export default function Home() {
             variants={staggerContainer(0.08, 0)}
             className="services-grid"
           >
-            {services.map((service, idx) => (
-              <motion.div key={idx} variants={revealVariants} custom={idx * 0.05}>
-                <ServiceCard
-                  icon={service.icon}
-                  title={service.title}
-                  desc={service.desc}
-                  linkText={service.linkText}
-                />
-              </motion.div>
-            ))}
+            {services.map((service, idx) => {
+              const variants = [revealVariants, revealLeftVariants, revealRightVariants, revealScaleVariants];
+              const selectedVariant = variants[idx % variants.length];
+              return (
+                <motion.div key={idx} variants={selectedVariant} custom={idx * 0.05}>
+                  <ServiceCard
+                    icon={service.icon}
+                    title={service.title}
+                    desc={service.desc}
+                    linkText={service.linkText}
+                  />
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
       </section>
@@ -378,37 +382,37 @@ export default function Home() {
           </motion.div>
 
           <div className="industries-grid">
-            <div className="industry-card reveal">
+            <div className="industry-card reveal-left">
               <svg viewBox="0 0 24 24">
                 <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72l5 2.73 5-2.73v3.72z" />
               </svg>
               <h4>Education</h4>
             </div>
-            <div className="industry-card reveal reveal-delay-1">
+            <div className="industry-card reveal-right reveal-delay-1">
               <svg viewBox="0 0 24 24">
                 <path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z" />
               </svg>
               <h4>Businesses</h4>
             </div>
-            <div className="industry-card reveal reveal-delay-2">
+            <div className="industry-card reveal-scale reveal-delay-2">
               <svg viewBox="0 0 24 24">
                 <path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z" />
               </svg>
               <h4>Fitness Centers</h4>
             </div>
-            <div className="industry-card reveal">
+            <div className="industry-card reveal-up">
               <svg viewBox="0 0 24 24">
                 <path d="M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm12-6h-8v7H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4z" />
               </svg>
               <h4>Hotels</h4>
             </div>
-            <div className="industry-card reveal reveal-delay-1">
+            <div className="industry-card reveal-rotate reveal-delay-1">
               <svg viewBox="0 0 24 24">
                 <path d="M13.13 22.19l-1.63-3.83c3.61-.98 6.47-3.84 7.45-7.45l3.83 1.63c-1.37 5.34-5.31 9.28-10.65 10.65zM5.64 12.5C4.21 12.02 3 10.81 2.5 9.38l-1.89 4.41c1.37 5.34 5.31 9.28 10.65 10.65l-1.63-3.83c-1.47-.48-2.68-1.69-3.16-3.12zM12 2C6.48 2 2 6.48 2 12c0 1.33.26 2.61.74 3.77l2.84-2.84c-.38-.93-.58-1.93-.58-2.93 0-3.87 3.13-7 7-7s7 3.13 7 7c0 1-.2 2-.58 2.93l2.84 2.84c.48-1.16.74-2.44.74-3.77 0-5.52-4.48-10-10-10z" />
               </svg>
               <h4>Startups</h4>
             </div>
-            <div className="industry-card reveal reveal-delay-2">
+            <div className="industry-card reveal-left reveal-delay-2">
               <svg viewBox="0 0 24 24">
                 <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z" />
               </svg>
@@ -536,15 +540,19 @@ export default function Home() {
           </motion.div>
 
           <div className="visionaries-grid">
-            {founders.map((founder, idx) => (
-              <MastermindCard
-                key={idx}
-                name={founder.name}
-                role={founder.role}
-                bio={founder.bio}
-                image={founder.image}
-              />
-            ))}
+            {founders.map((founder, idx) => {
+              const revealClasses = ['reveal-left', 'reveal-right', 'reveal-scale', 'reveal-up', 'reveal-rotate'];
+              return (
+                <MastermindCard
+                  key={idx}
+                  name={founder.name}
+                  role={founder.role}
+                  bio={founder.bio}
+                  image={founder.image}
+                  revealClass={revealClasses[idx % revealClasses.length]}
+                />
+              );
+            })}
           </div>
         </div>
       </section>

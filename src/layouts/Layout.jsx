@@ -25,12 +25,15 @@ export default function Layout({ children }) {
     });
 
     // Find and observe all reveal elements
-    const elements = document.querySelectorAll('.reveal');
+    const revealSelector = '.reveal, .reveal-up, .reveal-down, .reveal-left, .reveal-right, .reveal-scale, .reveal-rotate';
+    const unactiveSelector = '.reveal:not(.active), .reveal-up:not(.active), .reveal-down:not(.active), .reveal-left:not(.active), .reveal-right:not(.active), .reveal-scale:not(.active), .reveal-rotate:not(.active)';
+
+    const elements = document.querySelectorAll(revealSelector);
     elements.forEach((el) => revealObserver.observe(el));
 
     // Listen for dynamic changes in the DOM in case new sections mount later
     const mutationObserver = new MutationObserver(() => {
-      const currentElements = document.querySelectorAll('.reveal:not(.active)');
+      const currentElements = document.querySelectorAll(unactiveSelector);
       currentElements.forEach((el) => revealObserver.observe(el));
     });
 

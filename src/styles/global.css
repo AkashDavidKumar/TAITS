@@ -133,6 +133,25 @@
             border-color: var(--luxury-gold);
         }
 
+        /* Restore native cursors on form elements and interactive elements inside modal overlay */
+        input, textarea, select, option, input *, textarea * {
+            cursor: text !important;
+        }
+        button, a, label, .modal-close, .modal-close *, select, option {
+            cursor: pointer !important;
+        }
+        .modal-content, .modal-overlay {
+            cursor: default !important;
+        }
+
+        /* Hide custom cursor when hovering inputs, textareas, select elements, or anything inside modal-content */
+        body:has(input:hover, textarea:hover, select:hover, .modal-content:hover) .cursor-dot,
+        body:has(input:hover, textarea:hover, select:hover, .modal-content:hover) .cursor-outline {
+            opacity: 0 !important;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
         /* ==========================================================================
            PARTICLE BACKGROUND
            ========================================================================== */
@@ -362,6 +381,25 @@
         /* SCROLL REVEAL ANIMATIONS */
         .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .reveal-up { opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-up.active { opacity: 1; transform: translateY(0); }
+
+        .reveal-down { opacity: 0; transform: translateY(-50px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-down.active { opacity: 1; transform: translateY(0); }
+
+        .reveal-left { opacity: 0; transform: translateX(50px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-left.active { opacity: 1; transform: translateX(0); }
+
+        .reveal-right { opacity: 0; transform: translateX(-50px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-right.active { opacity: 1; transform: translateX(0); }
+
+        .reveal-scale { opacity: 0; transform: scale(0.85); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-scale.active { opacity: 1; transform: scale(1); }
+
+        .reveal-rotate { opacity: 0; transform: scale(0.85) rotate(-5deg); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-rotate.active { opacity: 1; transform: scale(1) rotate(0); }
+
         .reveal-delay-1 { transition-delay: 0.1s; }
         .reveal-delay-2 { transition-delay: 0.2s; }
         .reveal-delay-3 { transition-delay: 0.3s; }
@@ -1083,6 +1121,7 @@
             .nav-links { display: none; }
             .mobile-only-link { display: block !important; }
             .services-grid { grid-template-columns: 1fr; }
+            .mission-vision-cards { grid-template-columns: 1fr !important; }
             .nav-links.active {
                 display: flex !important;
                 flex-direction: column;

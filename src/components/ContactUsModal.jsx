@@ -42,7 +42,7 @@ export default function ContactUsModal({ isOpen, onClose }) {
           <div style={{ textAlign: 'center', padding: '1rem 0' }}>
             <h3 style={{ fontSize: '1.8rem', color: 'var(--luxury-gold)', marginBottom: '1rem' }}>🎉 Message Sent!</h3>
             <p style={{ color: 'var(--text-muted)' }}>
-              Check the Email Simulator at the bottom-right of the screen to view the auto-response and founder notifications.
+              Thank you! Your message has been sent. Our team will get back to you shortly.
             </p>
           </div>
         ) : (

@@ -4,9 +4,9 @@ import { MagneticAnchor } from './MagneticElement';
 /**
  * Founder / Team profile card showing role, bio, and magnetic social connection buttons.
  */
-export default function MastermindCard({ name, role, bio, image, linkedin = '#', instagram = '#', facebook = '#' }) {
+export default function MastermindCard({ name, role, bio, image, linkedin = '#', instagram = '#', facebook = '#', revealClass = 'reveal' }) {
   return (
-    <div className="vis-card reveal">
+    <div className={`vis-card ${revealClass}`}>
       <div className="vis-image-wrapper">
         <img
           src={image}
