@@ -32,7 +32,7 @@ export default async function handler(req, res) {
       },
     });
 
-    const destinationEmail = FOUNDER_EMAIL || SMTP_USER || 'bu230535@gmail.com';
+    const destinationEmail = FOUNDER_EMAIL || SMTP_USER;
     let mailOptionsFounder = {};
     let mailOptionsUser = {};
 
