@@ -10,7 +10,7 @@ export default async function handler(req, res) {
   }
 
   const { type, payload } = req.body;
-  const { SMTP_HOST, SMTP_USER, SMTP_PASS, SMTP_PORT, FOUNDER_EMAIL } = process.env;
+  const { SMTP_HOST, SMTP_USER, SMTP_PASS, SMTP_PORT, FOUNDER_EMAIL, GOOGLE_MEET_LINK } = process.env;
 
   const isSmtpConfigured = SMTP_HOST && SMTP_USER && SMTP_PASS;
 
@@ -49,6 +49,14 @@ export default async function handler(req, res) {
             <p><strong>Email:</strong> ${payload.email}</p>
             <p><strong>Organization:</strong> ${payload.organization || 'Not specified'}</p>
             <p><strong>Message:</strong> ${payload.message}</p>
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;"/>
+            <p>Click the button below to select a date, time, and attach a Google Meet link for this meeting:</p>
+            <div style="text-align: center; margin-top: 20px;">
+              <a href="${payload.origin}/?action=schedule&id=${payload.meetingId}&email=${encodeURIComponent(payload.email)}&name=${encodeURIComponent(payload.name)}" 
+                 style="display: inline-block; padding: 12px 24px; background-color: #1557FF; color: white; text-decoration: none; border-radius: 8px; font-weight: bold;">
+                📅 Select Date & Time Slot
+              </a>
+            </div>
           </div>
         `,
       };
@@ -64,6 +72,57 @@ export default async function handler(req, res) {
             <p>Thank you for scheduling a meeting with TAITS Tech. Our team have been notified of your request.</p>
             <p>We will review your details and contact you shortly.</p>
             <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;"/>
+            <p style="font-size: 0.9rem; color: #666;">Innovate. Integrate. Elevate.</p>
+          </div>
+        `,
+      };
+    } else if (type === 'confirm-schedule') {
+      const selectedMeetLink = payload.meetLink || GOOGLE_MEET_LINK || 'https://meet.google.com';
+
+      mailOptionsFounder = {
+        from: `"TAITS Tech Portal" <${SMTP_USER}>`,
+        to: destinationEmail,
+        subject: `🗓️ Meeting Confirmed with ${payload.name}`,
+        html: `
+          <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 10px; max-width: 600px;">
+            <h2 style="color: #1557FF;">Meeting Confirmed</h2>
+            <hr/>
+            <p><strong>Client Name:</strong> ${payload.name}</p>
+            <p><strong>Client Email:</strong> ${payload.email}</p>
+            <p><strong>Scheduled Date:</strong> ${payload.date}</p>
+            <p><strong>Scheduled Time:</strong> ${payload.time}</p>
+            <p><strong>Google Meet Link:</strong> <a href="${selectedMeetLink}">${selectedMeetLink}</a></p>
+            <div style="text-align: center; margin-top: 20px;">
+              <a href="${selectedMeetLink}" 
+                 style="display: inline-block; padding: 12px 24px; background-color: #1557FF; color: white; text-decoration: none; border-radius: 8px; font-weight: bold;">
+                💻 Join Google Meet
+              </a>
+            </div>
+          </div>
+        `,
+      };
+
+      mailOptionsUser = {
+        from: `"TAITS Tech" <${SMTP_USER}>`,
+        to: payload.email,
+        subject: `🗓️ Meeting Scheduled: TAITS Tech`,
+        html: `
+          <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 10px; max-width: 600px;">
+            <h2 style="color: #1557FF;">Your Meeting Has Been Scheduled!</h2>
+            <p>Hello ${payload.name},</p>
+            <p>Our team has finalized your meeting slot. Here are the confirmed details:</p>
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;"/>
+            <p><strong>Date:</strong> ${payload.date}</p>
+            <p><strong>Time:</strong> ${payload.time}</p>
+            <p><strong>Google Meet Link:</strong> <a href="${selectedMeetLink}">${selectedMeetLink}</a></p>
+            <div style="text-align: center; margin-top: 20px;">
+              <a href="${selectedMeetLink}" 
+                 style="display: inline-block; padding: 12px 24px; background-color: #1557FF; color: white; text-decoration: none; border-radius: 8px; font-weight: bold;">
+                💻 Join Google Meet
+              </a>
+            </div>
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;"/>
+            <p style="font-size: 0.9rem; color: #666;">If you have any questions or need to reschedule, please reply directly to this email.</p>
             <p style="font-size: 0.9rem; color: #666;">Innovate. Integrate. Elevate.</p>
           </div>
         `,

@@ -25,6 +25,7 @@ export default function ScheduleMeetingModal({ isOpen, onClose }) {
       organization: formData.organization,
       message: formData.message,
       meetingId,
+      origin: window.location.origin,
     });
 
     setIsSubmitting(false);
