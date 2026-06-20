@@ -248,7 +248,7 @@ export default function Home() {
               <motion.div
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "0px 0px -150px 0px" }}
                 custom={0.2}
                 variants={revealRightVariants}
                 className="mv-card"
@@ -262,7 +262,7 @@ export default function Home() {
               <motion.div
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "0px 0px -150px 0px" }}
                 custom={0.3}
                 variants={revealLeftVariants}
                 className="mv-card"
@@ -297,7 +297,7 @@ export default function Home() {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: '-50px' }}
+            viewport={{ once: true, margin: "0px 0px -150px 0px" }}
             variants={staggerContainer(0.08, 0)}
             className="services-grid"
           >

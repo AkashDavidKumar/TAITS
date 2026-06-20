@@ -20,8 +20,8 @@ export default function Layout({ children }) {
     };
 
     const revealObserver = new IntersectionObserver(revealCallback, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px',
+      threshold: 0.15,
+      rootMargin: '0px 0px -150px 0px',
     });
 
     // Find and observe all reveal elements
