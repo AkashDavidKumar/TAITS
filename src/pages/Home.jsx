@@ -116,36 +116,31 @@ export default function Home() {
 
   const founders = [
     {
-      name: 'Founder One',
-      role: 'Co-Founder',
-      bio: 'A passionate tech leader driving the strategic vision. Specializes in scaling AI and bringing enterprise solutions to market efficiently.',
-      image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&q=80',
+      name: 'Tony Alldo J',
+      role: '.NET Developer',
+      bio: 'Experienced .NET Developer specializing in ASP.NET Core, C#, MVC, Entity Framework, and SQL Server. Skilled in designing and developing scalable web applications, task management systems, and business solutions. Committed to turning complex challenges into innovative, efficient, and user-focused solutions through technical excellence and continuous learning.',
+      image: '',
+      linkedin: 'https://www.linkedin.com/in/tony-alldo-17a60a282',
+      instagram: 'https://www.instagram.com/tonyalldo/',
     },
     {
-      name: 'Founder Two',
-      role: 'Co-Founder',
-      bio: 'The architectural mind behind our cloud and CRM solutions, ensuring highly reliable, scalable performance for global clients.',
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80',
+      name: 'Akash David Kumar M',
+      role: 'MERN Stack Developer',
+      bio: 'A passionate MERN Stack Developer focused on building scalable web applications and modern digital solutions. Specializes in HTML, CSS, and JS, delivering efficient and user-friendly experiences across projects.',
+      image: '',
+      linkedin: 'https://linkedin.com/in/akash-david-kumar-505778351/',
+      instagram: 'https://www.instagram.com/its_me_mr.akash_2005/',
     },
     {
-      name: 'Founder Three',
-      role: 'Co-Founder',
-      bio: 'A creative force focusing on user experience, mobile app development, and delivering top-tier UI/UX across all projects.',
-      image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=300&q=80',
-    },
-    {
-      name: 'Founder Four',
-      role: 'Co-Founder',
-      bio: 'Driving our educational initiatives and ERP software mapping, bringing years of technical experience and process automation.',
-      image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&q=80',
-    },
-    {
-      name: 'Founder Five',
-      role: 'Co-Founder',
-      bio: 'Spearheads business relationships and ensures client success. Passionate about linking technology to real-world impact.',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80',
+      name: 'Ilakkiya N',
+      role: 'Java Full Stack Developer',
+      bio: 'A Java Full Stack Developer with 5+ years of experience in designing, developing, and delivering scalable enterprise applications. A corporate trainer passionate about mentoring learners and professionals in full stack development.',
+      image: '',
+      linkedin: 'https://www.linkedin.com/in/ilakkiya-n-072b38337',
+      instagram: 'https://www.instagram.com/ila__1105?igsh=MTE4dG8wOXExeHZhcw==',
     },
   ];
+
 
   return (
     <div style={{ position: 'relative', zIndex: 1 }}>
@@ -549,6 +544,8 @@ export default function Home() {
                   role={founder.role}
                   bio={founder.bio}
                   image={founder.image}
+                  linkedin={founder.linkedin}
+                  instagram={founder.instagram}
                   revealClass={revealClasses[idx % revealClasses.length]}
                 />
               );
