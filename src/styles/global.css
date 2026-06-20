@@ -1112,18 +1112,14 @@
             .step-title { margin-bottom: 0 !important; }
             .stats-wrap { grid-template-columns: repeat(2, 1fr); }
             .stat-item { border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 2rem; border-right: none; }
-            .stat-item:nth-child(even) { border-right: none; }
             .footer-grid { grid-template-columns: 1fr 1fr; }
-        }
- 
-        @media (max-width: 768px) {
-            .section-padding { padding: 4rem 1.5rem; }
-            .section-title { font-size: 2.2rem; }
-            .section-subtitle { font-size: 1rem; }
+
+            /* Mobile Navigation Trigger (Tablet/Mobile break at 1024px) */
             .nav-links { display: none; }
             .mobile-only-link { display: block !important; }
-            .services-grid { grid-template-columns: 1fr; }
-            .mission-vision-cards { grid-template-columns: 1fr !important; }
+            .nav-cta { display: none !important; }
+            .mobile-nav-actions { display: flex !important; }
+            .mobile-menu-btn { display: block; }
             .nav-links.active {
                 display: flex !important;
                 flex-direction: column;
@@ -1141,11 +1137,18 @@
                 z-index: 999;
                 animation: slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             }
-            .nav-cta { display: none !important; }
-            .mobile-nav-actions { display: flex !important; }
-            .mobile-menu-btn { display: block; }
+
+            /* About Grid Stacking & Cards Stacking on Tablet */
+            .about-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
+            .mission-vision-cards { grid-template-columns: 1fr !important; }
+        }
+ 
+        @media (max-width: 768px) {
+            .section-padding { padding: 4rem 1.5rem; }
+            .section-title { font-size: 2.2rem; }
+            .section-subtitle { font-size: 1rem; }
+            .services-grid { grid-template-columns: 1fr; }
             .hero-title { font-size: 2.8rem; }
-            .about-grid { grid-template-columns: 1fr; }
             .stats-wrap { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr; }
             .bento-grid { grid-template-columns: 1fr; }

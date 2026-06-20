@@ -61,7 +61,7 @@ export default async function handler(req, res) {
           <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 10px; max-width: 600px;">
             <h2 style="color: #1557FF;">We have received your request</h2>
             <p>Hello ${payload.name},</p>
-            <p>Thank you for scheduling a meeting with TAITS Tech. Our founders have been notified of your request.</p>
+            <p>Thank you for scheduling a meeting with TAITS Tech. Our team have been notified of your request.</p>
             <p>We will review your details and contact you shortly.</p>
             <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;"/>
             <p style="font-size: 0.9rem; color: #666;">Innovate. Integrate. Elevate.</p>
