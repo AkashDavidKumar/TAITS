@@ -54,8 +54,10 @@ export default function ProcessTracker() {
       {steps.map((step, idx) => (
         <div key={idx} className="process-step">
           <div className="step-num">{step.num}</div>
-          <h4 className="step-title">{step.title}</h4>
-          <p className="step-desc">{step.desc}</p>
+          <div className="step-content">
+            <h4 className="step-title">{step.title}</h4>
+            <p className="step-desc">{step.desc}</p>
+          </div>
         </div>
       ))}
     </div>

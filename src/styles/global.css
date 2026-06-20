@@ -1106,8 +1106,10 @@
             .info-tooltip strong { display: block; margin-bottom: 2px; }
             .process-container { flex-direction: column; align-items: flex-start; gap: 2rem; }
             .process-line { width: 2px; height: 100%; left: 35px; top: 0; }
-            .process-step { width: 100%; flex-direction: row; text-align: left; gap: 1.5rem; }
-            .step-num { margin: 0; min-width: 70px; }
+            .process-step { width: 100%; flex-direction: row; text-align: left; gap: 1.5rem; align-items: flex-start; }
+            .step-num { margin: 0 !important; min-width: 70px; }
+            .step-content { flex: 1; display: flex; flex-direction: column; gap: 0.3rem; }
+            .step-title { margin-bottom: 0 !important; }
             .stats-wrap { grid-template-columns: repeat(2, 1fr); }
             .stat-item { border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 2rem; border-right: none; }
             .stat-item:nth-child(even) { border-right: none; }
@@ -1170,6 +1172,32 @@
                 max-width: 100% !important;
                 margin: 0 0.5rem !important;
             }
+            .modal-overlay {
+                padding: 0.75rem !important;
+            }
+            .modal-content {
+                padding: 2.5rem 1.5rem 2rem 1.5rem !important;
+                border-radius: 16px !important;
+                max-height: 92vh !important;
+                overflow-y: auto !important;
+            }
+            .modal-content h3 {
+                font-size: 1.4rem !important;
+                margin-bottom: 1.2rem !important;
+            }
+            .modal-close {
+                top: 1rem !important;
+                right: 1rem !important;
+                font-size: 1.1rem !important;
+            }
+            .form-group {
+                margin-bottom: 1rem !important;
+            }
+            .form-group input, 
+            .form-group textarea {
+                padding: 0.7rem 0.9rem !important;
+                font-size: 0.9rem !important;
+            }
         }
  
         @keyframes slideDown {
@@ -1189,6 +1217,7 @@
             display: flex; align-items: center; justify-content: center;
             z-index: 110000;
             padding: 1.5rem;
+            overflow-y: auto;
         }
         body.light-theme .modal-overlay {
             background: rgba(248, 250, 252, 0.7);
