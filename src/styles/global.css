@@ -1309,3 +1309,9 @@
             box-shadow: 0 0 10px rgba(45,123,255,0.15);
             background: rgba(255,255,255,0.04);
         }
+
+        /* Restore standard cursor on schedule page */
+        body.schedule-page,
+        body.schedule-page * {
+            cursor: auto !important;
+        }

@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 /**
  * SchedulePicker Component.
  * Loaded when URL contains `?action=schedule`.
- * Allows the founder to pick a date, time, and custom Google Meet link,
- * then dispatches the confirmation email to both the founder and the client.
+ * Allows the team to pick a date, time, and custom Google Meet link,
+ * then dispatches the confirmation email to both the team and the client.
  */
 export default function SchedulePicker() {
   const [queryParams, setQueryParams] = useState({ id: '', email: '', name: '' });
@@ -12,14 +12,45 @@ export default function SchedulePicker() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
+  const [isLight, setIsLight] = useState(false);
 
   useEffect(() => {
+    // Detect system color scheme preference and initialize theme class
+    const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+    setIsLight(systemPrefersLight);
+    
+    if (systemPrefersLight) {
+      document.body.classList.add('light-theme');
+    } else {
+      document.body.classList.remove('light-theme');
+    }
+
+    // Add schedule-page identifier for cursor restore rules in CSS
+    document.body.classList.add('schedule-page');
+
     const params = new URLSearchParams(window.location.search);
     setQueryParams({
       id: params.get('id') || '',
       email: params.get('email') || '',
       name: params.get('name') || '',
     });
+
+    // Listen for theme preference changes on the system
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: light)');
+    const handleThemeChange = (e) => {
+      setIsLight(e.matches);
+      if (e.matches) {
+        document.body.classList.add('light-theme');
+      } else {
+        document.body.classList.remove('light-theme');
+      }
+    };
+    mediaQuery.addEventListener('change', handleThemeChange);
+
+    return () => {
+      document.body.classList.remove('schedule-page');
+      mediaQuery.removeEventListener('change', handleThemeChange);
+    };
   }, []);
 
   const handleSubmit = async (e) => {
@@ -78,10 +109,10 @@ export default function SchedulePicker() {
         width: '100%',
         maxWidth: '520px',
         padding: '3rem 2.5rem',
-        background: '#0d111d',
-        border: '1px solid var(--glass-border)',
+        background: isLight ? '#ffffff' : '#0d111d',
+        border: isLight ? '1px solid rgba(0, 0, 0, 0.08)' : '1px solid var(--glass-border)',
         borderRadius: '24px',
-        boxShadow: 'var(--glass-shadow)',
+        boxShadow: isLight ? '0 10px 30px rgba(0,0,0,0.05)' : 'var(--glass-shadow)',
         boxSizing: 'border-box',
         textAlign: 'center'
       }} className="schedule-card">
@@ -98,8 +129,8 @@ export default function SchedulePicker() {
           <div style={{ marginTop: '2rem' }}>
             <span style={{ fontSize: '3rem', display: 'block', marginBottom: '1rem' }}>🎉</span>
             <h4 style={{ fontSize: '1.5rem', color: 'var(--luxury-gold)', marginBottom: '1rem' }}>Meeting Scheduled!</h4>
-            <p style={{ color: 'var(--text-muted)', lineHeight: '1.6', marginBottom: '2rem' }}>
-              The appointment has been locked. Confirmation emails containing the meeting schedule and Google Meet link have been sent to <strong>{queryParams.name || queryParams.email}</strong> and the founders' inbox.
+            <p style={{ color: isLight ? '#475569' : 'var(--text-muted)', lineHeight: '1.6', marginBottom: '2rem' }}>
+              The appointment has been locked. Confirmation emails containing the meeting schedule and Google Meet link have been sent to <strong>{queryParams.name || queryParams.email}</strong> and the team's inbox.
             </p>
             <button
               onClick={() => window.location.href = '/'}
@@ -112,16 +143,16 @@ export default function SchedulePicker() {
         ) : (
           <form onSubmit={handleSubmit} style={{ textAlign: 'left', marginTop: '1.5rem' }}>
             <div style={{
-              background: 'rgba(255, 255, 255, 0.02)',
-              border: '1px solid rgba(255, 255, 255, 0.05)',
+              background: isLight ? '#f1f5f9' : 'rgba(255, 255, 255, 0.02)',
+              border: isLight ? '1px solid rgba(0, 0, 0, 0.05)' : '1px solid rgba(255, 255, 255, 0.05)',
               borderRadius: '12px',
               padding: '1.2rem',
               marginBottom: '1.5rem'
             }}>
-              <p style={{ margin: 0, fontSize: '0.9rem', color: 'var(--text-muted)' }}>
+              <p style={{ margin: 0, fontSize: '0.9rem', color: isLight ? '#64748b' : 'var(--text-muted)' }}>
                 Scheduling slot for:
               </p>
-              <h4 style={{ margin: '5px 0 0 0', fontSize: '1.1rem', color: 'var(--text-main)', fontWeight: 600 }}>
+              <h4 style={{ margin: '5px 0 0 0', fontSize: '1.1rem', color: isLight ? '#0f172a' : 'var(--text-main)', fontWeight: 600 }}>
                 {queryParams.name || 'Client Request'}
               </h4>
               <p style={{ margin: '3px 0 0 0', fontSize: '0.85rem', color: 'var(--electric-blue)' }}>
@@ -144,7 +175,7 @@ export default function SchedulePicker() {
             )}
 
             <div className="form-group" style={{ marginBottom: '1.2rem' }}>
-              <label style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 500, letterSpacing: '1px', textTransform: 'uppercase' }}>Select Date</label>
+              <label style={{ fontSize: '0.85rem', color: isLight ? '#475569' : 'var(--text-muted)', fontWeight: 500, letterSpacing: '1px', textTransform: 'uppercase' }}>Select Date</label>
               <input
                 type="date"
                 required
@@ -154,9 +185,9 @@ export default function SchedulePicker() {
                   width: '100%',
                   padding: '0.8rem 1rem',
                   borderRadius: '12px',
-                  background: '#161b26',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                  color: '#ffffff',
+                  background: isLight ? '#f1f5f9' : '#161b26',
+                  border: isLight ? '1px solid rgba(0,0,0,0.15)' : '1px solid rgba(255,255,255,0.1)',
+                  color: isLight ? '#0f172a' : '#ffffff',
                   outline: 'none',
                   boxSizing: 'border-box'
                 }}
@@ -164,7 +195,7 @@ export default function SchedulePicker() {
             </div>
 
             <div className="form-group" style={{ marginBottom: '1.2rem' }}>
-              <label style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 500, letterSpacing: '1px', textTransform: 'uppercase' }}>Select Time</label>
+              <label style={{ fontSize: '0.85rem', color: isLight ? '#475569' : 'var(--text-muted)', fontWeight: 500, letterSpacing: '1px', textTransform: 'uppercase' }}>Select Time</label>
               <input
                 type="time"
                 required
@@ -174,9 +205,9 @@ export default function SchedulePicker() {
                   width: '100%',
                   padding: '0.8rem 1rem',
                   borderRadius: '12px',
-                  background: '#161b26',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                  color: '#ffffff',
+                  background: isLight ? '#f1f5f9' : '#161b26',
+                  border: isLight ? '1px solid rgba(0,0,0,0.15)' : '1px solid rgba(255,255,255,0.1)',
+                  color: isLight ? '#0f172a' : '#ffffff',
                   outline: 'none',
                   boxSizing: 'border-box'
                 }}
@@ -184,7 +215,7 @@ export default function SchedulePicker() {
             </div>
 
             <div className="form-group" style={{ marginBottom: '1.5rem' }}>
-              <label style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 500, letterSpacing: '1px', textTransform: 'uppercase' }}>Google Meet Link (Optional)</label>
+              <label style={{ fontSize: '0.85rem', color: isLight ? '#475569' : 'var(--text-muted)', fontWeight: 500, letterSpacing: '1px', textTransform: 'uppercase' }}>Google Meet Link (Optional)</label>
               <input
                 type="url"
                 placeholder="https://meet.google.com/..."
@@ -194,14 +225,14 @@ export default function SchedulePicker() {
                   width: '100%',
                   padding: '0.8rem 1rem',
                   borderRadius: '12px',
-                  background: '#161b26',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                  color: '#ffffff',
+                  background: isLight ? '#f1f5f9' : '#161b26',
+                  border: isLight ? '1px solid rgba(0,0,0,0.15)' : '1px solid rgba(255,255,255,0.1)',
+                  color: isLight ? '#0f172a' : '#ffffff',
                   outline: 'none',
                   boxSizing: 'border-box'
                 }}
               />
-              <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '4px', display: 'block' }}>
+              <span style={{ fontSize: '0.75rem', color: isLight ? '#64748b' : 'var(--text-muted)', marginTop: '4px', display: 'block' }}>
                 Leave empty to use default Google Meet room set in .env.
               </span>
             </div>

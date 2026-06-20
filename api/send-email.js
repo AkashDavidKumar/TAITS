@@ -52,7 +52,7 @@ export default async function handler(req, res) {
             <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;"/>
             <p>Click the button below to select a date, time, and attach a Google Meet link for this meeting:</p>
             <div style="text-align: center; margin-top: 20px;">
-              <a href="${payload.origin}/?action=schedule&id=${payload.meetingId}&email=${encodeURIComponent(payload.email)}&name=${encodeURIComponent(payload.name)}" 
+              <a href="https://taits.vercel.app/?action=schedule&id=${payload.meetingId}&email=${encodeURIComponent(payload.email)}&name=${encodeURIComponent(payload.name)}" 
                  style="display: inline-block; padding: 12px 24px; background-color: #1557FF; color: white; text-decoration: none; border-radius: 8px; font-weight: bold;">
                 📅 Select Date & Time Slot
               </a>

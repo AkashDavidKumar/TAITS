@@ -45,7 +45,7 @@ export default function ScheduleMeetingModal({ isOpen, onClose }) {
           <div style={{ textAlign: 'center', padding: '1rem 0' }}>
             <h3 style={{ fontSize: '1.8rem', color: 'var(--luxury-gold)', marginBottom: '1rem' }}>🎉 Request Sent!</h3>
             <p style={{ color: 'var(--text-muted)' }}>
-              Thank you! Our founders have been notified and will get back to you shortly.
+              Thank you! Our team has been notified and will get back to you shortly.
             </p>
           </div>
         ) : (
