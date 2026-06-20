@@ -2,7 +2,7 @@ import nodemailer from 'nodemailer';
 
 /**
  * Vercel Serverless Function to process emails.
- * Sends exactly one email to the configured founder address with details.
+ * Sends one email copy to the founder and a confirmation email to the user.
  */
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -33,10 +33,11 @@ export default async function handler(req, res) {
     });
 
     const destinationEmail = FOUNDER_EMAIL || SMTP_USER || 'bu230535@gmail.com';
-    let mailOptions = {};
+    let mailOptionsFounder = {};
+    let mailOptionsUser = {};
 
     if (type === 'meeting-request') {
-      mailOptions = {
+      mailOptionsFounder = {
         from: `"TAITS Tech Portal" <${SMTP_USER}>`,
         to: destinationEmail,
         subject: `📅 Meeting Request from ${payload.name}`,
@@ -51,8 +52,24 @@ export default async function handler(req, res) {
           </div>
         `,
       };
+
+      mailOptionsUser = {
+        from: `"TAITS Tech" <${SMTP_USER}>`,
+        to: payload.email,
+        subject: `📥 Meeting Request Received: TAITS Tech`,
+        html: `
+          <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 10px; max-width: 600px;">
+            <h2 style="color: #1557FF;">We have received your request</h2>
+            <p>Hello ${payload.name},</p>
+            <p>Thank you for scheduling a meeting with TAITS Tech. Our founders have been notified of your request.</p>
+            <p>We will review your details and contact you shortly.</p>
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;"/>
+            <p style="font-size: 0.9rem; color: #666;">Innovate. Integrate. Elevate.</p>
+          </div>
+        `,
+      };
     } else if (type === 'contact') {
-      mailOptions = {
+      mailOptionsFounder = {
         from: `"TAITS Tech Portal" <${SMTP_USER}>`,
         to: destinationEmail,
         subject: `✉️ New Contact Message: ${payload.subject}`,
@@ -67,9 +84,31 @@ export default async function handler(req, res) {
           </div>
         `,
       };
+
+      mailOptionsUser = {
+        from: `"TAITS Tech" <${SMTP_USER}>`,
+        to: payload.email,
+        subject: `📥 Message Received: TAITS Tech`,
+        html: `
+          <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 10px; max-width: 600px;">
+            <h2 style="color: #1557FF;">Thank you for contacting us</h2>
+            <p>Hello ${payload.name},</p>
+            <p>Thank you for reaching out to us. We have received your contact inquiry and our team will get back to you shortly.</p>
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;"/>
+            <p style="font-size: 0.9rem; color: #666;">Innovate. Integrate. Elevate.</p>
+          </div>
+        `,
+      };
     }
 
-    await transporter.sendMail(mailOptions);
+    // Send to Founder
+    await transporter.sendMail(mailOptionsFounder);
+
+    // Send to User
+    if (payload.email) {
+      await transporter.sendMail(mailOptionsUser);
+    }
+
     return res.status(200).json({ success: true });
   } catch (err) {
     console.error(err);
