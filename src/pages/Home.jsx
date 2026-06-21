@@ -125,6 +125,7 @@ export default function Home() {
       image: tonyImg,
       linkedin: 'https://www.linkedin.com/in/tony-alldo-17a60a282',
       instagram: 'https://www.instagram.com/tonyalldo/',
+      email: 'tonyalldo@gmail.com',
     },
     {
       name: 'Akash David Kumar M',
@@ -133,6 +134,7 @@ export default function Home() {
       image: akashImg,
       linkedin: 'https://linkedin.com/in/akash-david-kumar-505778351/',
       instagram: 'https://www.instagram.com/its_me_mr.akash_2005/',
+      email: 'akashdavidkumar77@gmail.com',
     },
     {
       name: 'Ilakkiya N',
@@ -141,6 +143,7 @@ export default function Home() {
       image: ilakkiyaImg,
       linkedin: 'https://www.linkedin.com/in/ilakkiya-n-072b38337',
       instagram: 'https://www.instagram.com/ila__1105?igsh=MTE4dG8wOXExeHZhcw==',
+      email: '',
     },
   ];
 
@@ -549,6 +552,7 @@ export default function Home() {
                   image={founder.image}
                   linkedin={founder.linkedin}
                   instagram={founder.instagram}
+                  email={founder.email}
                   revealClass={revealClasses[idx % revealClasses.length]}
                 />
               );
@@ -641,10 +645,39 @@ export default function Home() {
             <div>
               <h4 className="footer-title">Scan to Connect</h4>
               <div className="qr-code">
-                <svg viewBox="0 0 100 100" fill="#030712">
-                  <rect width="100" height="100" fill="#fff" />
-                  <path d="M10 10h25v25H10zM15 15h15v15H15zM65 10h25v25H65zM70 15h15v15H70zM10 65h25v25H10zM15 70h15v15H15zM45 10h10v10H45zM45 25h10v10H45zM25 45h10v10H25zM10 45h10v10H10zM40 40h20v20H40zM65 45h10v10H65zM80 45h10v10H80zM45 65h10v10H45zM45 80h10v10H45zM65 65h10v10H65zM80 65h10v10H80zM65 80h10v10H65zM80 80h10v10H80z" />
-                </svg>
+                <a href="https://taits.vercel.app" target="_blank">
+                  <div
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      padding: "5px",
+                      background: "linear-gradient(180deg, #ffffff 0%, #f5f5f5 100%)",
+                      borderRadius: "18px",
+                      border: "1px solid rgba(255,255,255,0.8)",
+                      boxShadow:
+                        "0 8px 24px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.9)",
+                      position: "relative",
+                      overflow: "hidden",
+                    }}
+                  >
+                    {/* Gloss effect */}
+                    <div
+                      style={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "40%",
+                        background:
+                          "linear-gradient(to bottom, rgba(255,255,255,0.6), rgba(255,255,255,0))",
+                        pointerEvents: "none",
+                      }}
+                    />
+
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://taits.vercel.app" alt="TAITS QR Code" />
+                  </div>
+                </a>
               </div>
             </div>
           </div>
