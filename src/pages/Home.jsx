@@ -120,8 +120,8 @@ export default function Home() {
   const founders = [
     {
       name: 'Tony Alldo J',
-      role: '.NET Developer',
-      bio: 'Experienced .NET Developer specializing in ASP.NET Core, C#, MVC, Entity Framework, and SQL Server. Skilled in designing and developing scalable web applications, task management systems, and business solutions. Committed to turning complex challenges into innovative, efficient, and user-focused solutions through technical excellence and continuous learning.',
+      role: '.NET Full-Stack Developer',
+      bio: 'Experienced .NET Full-Stack Developer specializing in ASP.NET Core, C#, MVC, Entity Framework, and SQL Server. Skilled in designing and developing scalable web applications, task management systems, and business solutions. Committed to turning complex challenges into innovative, efficient, and user-focused solutions through technical excellence and continuous learning.',
       image: tonyImg,
       linkedin: 'https://www.linkedin.com/in/tony-alldo-17a60a282',
       instagram: 'https://www.instagram.com/tonyalldo/',
