@@ -631,7 +631,7 @@ export default function Home() {
             <div>
               <h4 className="footer-title">Contact Info</h4>
               <ul className="footer-links">
-                <li><a href="tel:+911234567890">📞 +91 12345 67890</a></li>
+                <li><a href="tel:+919894547420">📞 +91 9894547420</a></li>
                 <li><a href="mailto:hello@taitstech.com">✉️ hello@taitstech.com</a></li>
                 <li><a href="https://www.taitstech.com">🌐 www.taitstech.com</a></li>
                 <li><a href="#">📍 GitHub: taitstech</a></li>
